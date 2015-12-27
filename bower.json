@@ -17,6 +17,6 @@
     "components-font-awesome": "~4.5.0",
     "polymer": "~1.2.0",
     "animate.css": "~3.5.0",
-    "font-roboto": "~1.0.1"
+    "font-roboto": "~0.0.2"
   }
 }
