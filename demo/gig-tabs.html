@@ -1,24 +1,10 @@
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/font-roboto/roboto.html">
+<link rel="import" href="../bower_components/gig-html/gig-html.html">
 <link rel="stylesheet" href="../bower_components/components-font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="../bower_components/animate.css/animate.min.css">
+<link rel="stylesheet" href="../bower_components/font-roboto/dist/styles/roboto.min.css">
 
-
-<dom-module id="html-echo">
-    <template></template>
-    <script>
-    Polymer({
-        is: 'html-echo',
-        ready: function() {
-            this.htmlChanged();
-        },
-        htmlChanged: function() {
-            this.innerHTML = this.html;
-        }
-      });
-    </script>
-</dom-module>
 
 <dom-module id="gig-tabs">
 
@@ -254,7 +240,7 @@
             <div class="tab-content" id="animatable">
                 <template is="dom-repeat" items="{{items}}">
                     <div role="tabpanel" class$="tab-pane [[getAnimationClass(animation)]] [[getClassTab(index, selected)]]">
-                        <html-echo html="{{item.content}}"></html-echo>
+                        <gig-html html="{{item.content}}"></gig-html>
                     </div>
                 </template>
             </div>
