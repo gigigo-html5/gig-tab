@@ -1,0 +1,22 @@
+{
+  "name": "gig-tab",
+  "version": "0.0.1",
+  "homepage": "https://github.com/gigigo-html5/gig-tab",
+  "authors": [
+    "Pedro Peña <pedro.jose@gigigo.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "components-font-awesome": "~4.5.0",
+    "polymer": "~1.2.0",
+    "animate.css": "~3.5.0",
+    "font-roboto": "~1.0.1"
+  }
+}

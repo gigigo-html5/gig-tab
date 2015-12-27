@@ -1,0 +1,322 @@
+<!--
+ Webcomponents to generate tabs
+ @version v0.0.1 - 2015-12-27
+ @link https://github.com/gigigo-html5/gig-tab
+ @author Pedro José Peña Jerez <pedro.jose@gigigo.com>
+ @license MIT License, http://www.opensource.org/licenses/MIT
+ -->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/font-roboto/roboto.html">
+<link rel="stylesheet" href="../bower_components/components-font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../bower_components/animate.css/animate.min.css">
+
+
+<dom-module id="html-echo">
+    <template></template>
+    <script>
+    Polymer({
+        is: 'html-echo',
+        ready: function() {
+            this.htmlChanged();
+        },
+        htmlChanged: function() {
+            this.innerHTML = this.html;
+        }
+      });
+    </script>
+</dom-module>
+
+<dom-module id="gig-tabs">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            font-family: Roboto,sans-serif;
+            color: #76838f;
+            font-size: 14px;
+            line-height: 1.57142857;
+        }
+
+        ::content gig-tab {
+            display: none;
+        }
+
+        .nav-tabs {
+            border-bottom: 1px solid #e4eaec
+        }
+
+        ol, ul, li {
+            margin: 0;
+            padding: 0
+        }
+
+        .nav {
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+        }
+
+        .nav-tabs>li {
+            display: inline-block;
+            margin-bottom: -1px;
+
+        }
+
+        .nav-tabs>li>a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            transition: .25s;
+            -webkit-transition: .25s;
+            -o-transition: .25s;
+            color: #76838f;
+            cursor: pointer;
+            border-radius: 3px 3px 0 0;
+            border: 1px solid transparent;
+        }
+
+        .nav>li>a {
+            display: block;
+        }
+
+        .nav-tabs>li>a:hover {
+            border-color: transparent transparent #e4eaec;
+            background-color: #f3f7f9;
+            text-decoration: none;
+        }
+
+        .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+            color: white;
+            background-color: #62a8ea;
+            cursor: default;
+        }
+
+        .tab-content {
+            padding-top: 20px;
+        }
+
+        .tab-content>.tab-pane {
+            display: none;
+        }
+
+        .tab-content>.active {
+            display: block;
+        }
+
+        .nav-tabs>li>a>i {
+            display: block;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .nav-tabs>li.active>a>i {
+            color: white;
+        }
+
+        .nav-tabs-vertical .nav-tabs {
+            float: left;
+            border-right: 1px solid #e4eaec;
+            border-bottom: 0;
+            margin-right: 25px;
+        }
+
+        .nav-tabs-vertical.nav-tabs-reverse .nav-tabs {
+            float: right;
+            border-right: 0;
+            border-left: 1px solid #e4eaec;
+        }
+
+        .nav-tabs-vertical.nav-tabs-reverse .nav-tabs>li {
+            margin-right: 0;
+            margin-left: -1px;
+        }
+
+        .nav-tabs-vertical.nav-tabs-reverse .nav-tabs>li>a {
+            margin-left: 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .nav-tabs-vertical.nav-tabs-reverse .nav-tabs>li>a:hover {
+            border-left-color: #e4eaec;
+            border-right-color: transparent;
+        }
+
+        .nav-tabs-vertical .nav-tabs>li {
+            display: block;
+            margin-right: -1px;
+            margin-bottom: 0;
+        }
+
+        .nav-tabs-vertical .nav-tabs>li>a {
+            padding: 10px 20px;
+            margin-bottom: 2px;
+            border-radius: 4px 0 0 4px;
+            margin-right: 0;
+        }
+
+        .nav-tabs-vertical .tab-content {
+            overflow: hidden;
+            padding-top: 0;
+        }
+
+        .nav-tabs-vertical .nav-tabs>li>a:hover {
+            border-right-color: #e4eaec;
+            border-bottom-color: transparent;
+        }
+
+        .nav-tabs-vertical:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
+
+        .nav-tabs-solid .nav-tabs {
+            border-bottom-color: #f3f7f9;
+        }
+
+        .nav-tabs-solid .tab-content {
+            background: #f3f7f9;
+            padding: 20px;
+        }
+
+        .nav-tabs-solid .nav-tabs>li.active>a, .nav-tabs-solid .nav-tabs>li.active>a:focus, .nav-tabs-solid .nav-tabs>li.active>a:hover {
+            background-color: #f3f7f9;
+            color: #76838f;
+            border-color: transparent;
+
+        }
+
+        .nav-tabs-solid .nav-tabs>li>a:hover {
+            border-color: transparent;
+        }
+
+        .nav-tabs-vertical.nav-tabs-solid .nav-tabs {
+            border-right-color: #f3f7f9;
+            margin-right: 0;
+        }
+
+        .nav-tabs-line .nav-tabs>li.active>a, .nav-tabs-line .nav-tabs>li.active>a:focus, .nav-tabs-line .nav-tabs>li.active>a:hover {
+            color: #62a8ea;
+            border-bottom: 2px solid #62a8ea;
+            background-color: transparent;
+        }
+
+        .nav-tabs-line .nav-tabs>li>a:hover {
+            border-bottom-color: #ccd5db;
+        }
+
+        .nav-tabs-line .nav-tabs>li>a:focus, .nav-tabs-line .nav-tabs>li>a:hover {
+            background: transparent;
+        }
+
+        .nav-tabs-line .nav-tabs>li>a {
+            border-bottom: 2px solid transparent;
+            padding: 10px 20px;
+        }
+
+        .nav-tabs-vertical.nav-tabs-line .nav-tabs>li.active>a, .nav-tabs-vertical.nav-tabs-line .nav-tabs>li.active>a:focus, .nav-tabs-vertical.nav-tabs-line .nav-tabs>li.active>a:hover {
+            border-right: 2px solid #62a8ea;
+            border-bottom: none;
+        }
+
+        .nav-tabs-vertical.nav-tabs-line .nav-tabs>li>a:hover {
+            border-right-color: #ccd5db;
+        }
+
+        .nav-tabs-vertical.nav-tabs-line .nav-tabs>li>a {
+            border-right: 2px solid transparent;
+            border-bottom: none;
+        }
+
+        .animate {
+            animation-duration: .5s;
+            -webkit-animation-duration: .5s;
+            -o-animation-duration: .5s;
+            -webkit-animation-timing-function: ease-out;
+            -o-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+            -webkit-animation-fill-mode: both;
+            -o-animation-fill-mode: both;
+            animation-fill-mode: both;
+
+        }
+
+    </style>
+
+    <template>
+        <content select="gig-tab" id="c"></content>
+        <div class$="[[class]]">
+            <ul class="nav nav-tabs" role="tablist">
+                <template is="dom-repeat" items="{{items}}">
+                    <li role="presentation" class$="[[getClassTab(index, selected)]]" on-click="clickTab"><a role="tab"><i class$="fa [[getClassIcon(item.icon)]]"></i>{{item.label}}</a></li>
+                </template>
+            </ul>
+
+            <div class="tab-content" id="animatable">
+                <template is="dom-repeat" items="{{items}}">
+                    <div role="tabpanel" class$="tab-pane [[getAnimationClass(animation)]] [[getClassTab(index, selected)]]">
+                        <html-echo html="{{item.content}}"></html-echo>
+                    </div>
+                </template>
+            </div>
+
+        </div>
+    </template>
+
+    <script>
+        (function() {
+            Polymer({
+                is: 'gig-tabs',
+                ready: function() {
+                    this._generateTabs();
+                    this.contentHidden = true;
+                },
+                _generateTabs: function() {
+                    var array = [];
+                    var items = Polymer.dom(this.$.c).getDistributedNodes();
+
+                    for (var i = 0; i < items.length; i++) {
+                        var item = items[i];
+
+                        array.push({
+                            label: item.getAttribute('label'),
+                            icon: item.getAttribute('icon'),
+                            content: item.innerHTML
+                        })
+                    }
+
+                    this.items = array;
+                },
+                clickTab : function(e) {
+                    this.selected = e.model.index;
+                },
+                getClassTab: function(index, selected) {
+                    if (index === selected) {
+                        return 'active';
+                    }
+                },
+                getAnimationClass: function(animation) {
+                    if (animation) {
+                        return 'animate ' + animation;
+                    }
+                },
+                getClassIcon: function(icon) {
+                    return icon;
+                },
+                properties: {
+                    selected: {
+                        type: Number,
+                        value: 0
+                    }
+                }
+            })
+        })();
+    </script>
+
+</dom-module>
