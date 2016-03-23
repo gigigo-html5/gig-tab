@@ -1,7 +1,7 @@
 {
   "name": "gig-tabs",
-  "version": "0.0.1",
-  "homepage": "https://github.com/gigigo-html5/gig-tab",
+  "version": "0.0.2",
+  "homepage": "https://github.com/gigigo-html5/gig-tabs",
   "authors": [
     "Pedro Peña <pedro.jose@gigigo.com>"
   ],
@@ -14,10 +14,9 @@
     "tests"
   ],
   "dependencies": {
-    "components-font-awesome": "~4.5.0",
     "polymer": "~1.2.0",
     "animate.css": "~3.5.0",
-    "font-roboto": "~0.0.2",
-    "gig-html": "~0.0.1"
+    "gig-html": "~0.0.1",
+    "gig-icon": "^0.0.1"
   }
 }

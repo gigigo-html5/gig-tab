@@ -5,8 +5,8 @@
     <meta name="fragment" content="!">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>Gig Component fieldMap Demo</title>
-    <link rel="import" href="/demo/gig-tabs.html">
+    <title>Gig Tabs - Component</title>
+    <link rel="import" href="/src/gig-tabs.html">
 
     <style is="custom-style">
         .field {
@@ -42,10 +42,10 @@
         <label>Tabs with label and icons</label>
 
         <gig-tabs class="nav-tabs-horizontal">
-            <gig-tab label="Home" icon="fa-home">
+            <gig-tab label="Home" icon="home">
                 <p>Lorem ipsum <b>Dolor</b></p>
             </gig-tab>
-            <gig-tab label="Contact" icon="fa-envelope">
+            <gig-tab label="Contact" icon="envelope">
                 <p>saasas</p>
             </gig-tab>
         </gig-tabs>
@@ -55,10 +55,10 @@
         <label>Tabs with icons</label>
 
         <gig-tabs class="nav-tabs-horizontal" selected="1">
-            <gig-tab icon="fa-home">
+            <gig-tab icon="home">
                 <p>Lorem ipsum <b>Dolor</b></p>
             </gig-tab>
-            <gig-tab icon="fa-envelope">
+            <gig-tab icon="envelope">
                 <p>saasas</p>
             </gig-tab>
         </gig-tabs>
@@ -125,6 +125,19 @@
                 <p>Lorem ipsum <b>Dolor</b></p>
             </gig-tab>
             <gig-tab label="Contact">
+                <p>saasas</p>
+            </gig-tab>
+        </gig-tabs>
+    </div>
+
+    <div class="field">
+        <label>Tabs Horizontal line with icon</label>
+
+        <gig-tabs class="nav-tabs-horizontal nav-tabs-line">
+            <gig-tab icon="home">
+                <p>Lorem ipsum <b>Dolor</b></p>
+            </gig-tab>
+            <gig-tab icon="email">
                 <p>saasas</p>
             </gig-tab>
         </gig-tabs>

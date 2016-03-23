@@ -1,17 +1,17 @@
 <!--
  Webcomponents to generate tabs
- @version v0.0.1 - 2015-12-27
+ @version v0.0.1 - 2016-03-23
  @link https://github.com/gigigo-html5/gig-tab
  @author Pedro José Peña Jerez <pedro.jose@gigigo.com>
  @license MIT License, http://www.opensource.org/licenses/MIT
+
  -->
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../gig-html/gig-html.html">
-<link rel="stylesheet" href="../components-font-awesome/css/font-awesome.min.css">
+<link rel="import" href="../gig-icon/gig-icon.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="stylesheet" href="../animate.css/animate.min.css">
-<link rel="stylesheet" href="../font-roboto/dist/styles/roboto.min.css">
-
 
 <dom-module id="gig-tabs">
 
@@ -92,13 +92,14 @@
             display: block;
         }
 
-        .nav-tabs>li>a>i {
-            display: block;
+        .nav-tabs>li>a>iron-icon {
+            display: inline-block;
             font-size: 20px;
             text-align: center;
+            width: 20px;
         }
 
-        .nav-tabs>li.active>a>i {
+        .nav-tabs>li.active>a>iron-icon {
             color: white;
         }
 
@@ -240,7 +241,9 @@
         <div class$="[[class]]">
             <ul class="nav nav-tabs" role="tablist">
                 <template is="dom-repeat" items="{{items}}">
-                    <li role="presentation" class$="[[getClassTab(index, selected)]]" on-click="clickTab"><a role="tab"><i class$="fa [[getClassIcon(item.icon)]]"></i>{{item.label}}</a></li>
+                    <li role="presentation" class$="[[getClassTab(index, selected)]]" on-click="clickTab"><a role="tab">
+                        <iron-icon icon$="fa:[[getClassIcon(item.icon)]]" hidden$="{{!item.icon}}"></iron-icon>
+                        {{item.label}}</a></li>
                 </template>
             </ul>
 
@@ -268,7 +271,8 @@
                     var items = Polymer.dom(this.$.c).getDistributedNodes();
 
                     for (var i = 0; i < items.length; i++) {
-                        var item = items[i];
+                        var item = items[i].cloneNode(true);
+                        items[i].remove();
 
                         array.push({
                             label: item.getAttribute('label'),
